@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131128202422) do
+ActiveRecord::Schema.define(version: 20131128212812) do
 
   create_table "app_versions", force: true do |t|
     t.string   "version"
@@ -49,9 +49,17 @@ ActiveRecord::Schema.define(version: 20131128202422) do
     t.datetime "updated_at"
     t.integer  "app_version_id"
     t.date     "sales_date"
+    t.integer  "upload_file_id"
   end
 
   add_index "sales", ["app_version_id"], name: "index_sales_on_app_version_id"
   add_index "sales", ["country_id"], name: "index_sales_on_country_id"
+  add_index "sales", ["upload_file_id"], name: "index_sales_on_upload_file_id"
+
+  create_table "upload_files", force: true do |t|
+    t.string   "filename"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

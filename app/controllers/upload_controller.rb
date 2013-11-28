@@ -6,6 +6,16 @@ class UploadController < ApplicationController
   def upload
     rowarray = Array.new
     myfile = params[:file]
+    
+    original_filename = params[:original_filename]
+    uploaded_file = UploadFile.find_by_filename(original_filename)
+    if uploaded_file.nil?
+      uploaded_file = UploadFile.create(filename: original_filename)
+      uploaded_file.save!
+    else
+      # File already exists
+      redirect_to welcome_index_path, :flash => { :error => "File #{original_filename} has already been uploaded!" }
+    end
 
     CSV.foreach(myfile.path) do |row|
       rowarray << row[0].split("\t")
