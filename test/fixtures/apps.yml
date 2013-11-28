@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  sku: MyString
+  apple_identifier: MyString
+  category: MyString
+
+two:
+  title: MyString
+  sku: MyString
+  apple_identifier: MyString
+  category: MyString

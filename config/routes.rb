@@ -1,4 +1,8 @@
 CooltoolSales::Application.routes.draw do
+  resources :app_versions
+
+  resources :apps
+
   post "upload/upload"
   get "upload/index"
   # The priority is based upon order of creation: first created -> highest priority.
