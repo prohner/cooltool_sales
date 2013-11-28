@@ -3,13 +3,14 @@
 <table>
   <thead>
     <tr>
+      <th>Title</th>
       <th>Units</th>
       <th>Proceeds</th>
       <th>Customer currency</th>
       <th>Country</th>
       <th>Currency of proceeds</th>
       <th>Customer price</th>
-      <th></th>
+      <th>Sales date</th>
       <th></th>
       <th></th>
     </tr>
@@ -18,12 +19,14 @@
   <tbody>
     <% @sales.each do |sale| %>
       <tr>
+        <td><%= sale.app_version.app.title %></td>
         <td><%= sale.units %></td>
         <td><%= sale.proceeds %></td>
         <td><%= sale.customer_currency %></td>
         <td><%= sale.country.country %></td>
         <td><%= sale.currency_of_proceeds %></td>
         <td><%= sale.customer_price %></td>
+        <td><%= sale.sales_date %></td>
         <td><%= link_to 'Show', sale %></td>
         <td><%= link_to 'Edit', edit_sale_path(sale) %></td>
         <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -35,3 +38,4 @@
 <br>
 
 <%= link_to 'New Sale', new_sale_path %>
+<%= link_to "Home", welcome_index_path %>

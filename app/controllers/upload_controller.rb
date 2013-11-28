@@ -35,7 +35,9 @@ class UploadController < ApplicationController
       sale = version.sales.create()
       sale.units = row[7]
       sale.proceeds = row[8]
-      sale.sales_date = row[9]
+      sale.sales_date = DateTime.strptime(row[9], "%m/%d/%Y")
+      
+      puts "Sales date is (#{sale.sales_date}) (#{row[9]})"
       sale.customer_currency = row[11]
       sale.currency_of_proceeds = row[13]
       sale.customer_price = row[15]
