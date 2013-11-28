@@ -1,4 +1,8 @@
 CooltoolSales::Application.routes.draw do
+  resources :sales
+
+  resources :countries
+
   resources :app_versions
 
   resources :apps

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  units: 1
+  proceeds: 9.99
+  customer_currency: MyString
+  country_id: 
+  currency_of_proceeds: MyString
+  customer_price: 9.99
+
+two:
+  units: 1
+  proceeds: 9.99
+  customer_currency: MyString
+  country_id: 
+  currency_of_proceeds: MyString
+  customer_price: 9.99

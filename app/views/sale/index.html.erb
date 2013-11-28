@@ -1,0 +1,46 @@
+<%- model_class = Sale -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:units) %></th>
+      <th><%= model_class.human_attribute_name(:proceeds) %></th>
+      <th><%= model_class.human_attribute_name(:customer_currency) %></th>
+      <th><%= model_class.human_attribute_name(:country_id) %></th>
+      <th><%= model_class.human_attribute_name(:currency_of_proceeds) %></th>
+      <th><%= model_class.human_attribute_name(:customer_price) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @sales.each do |sale| %>
+      <tr>
+        <td><%= link_to sale.id, sale_path(sale) %></td>
+        <td><%= sale.units %></td>
+        <td><%= sale.proceeds %></td>
+        <td><%= sale.customer_currency %></td>
+        <td><%= sale.country_id %></td>
+        <td><%= sale.currency_of_proceeds %></td>
+        <td><%= sale.customer_price %></td>
+        <td><%=l sale.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_sale_path(sale), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      sale_path(sale),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_sale_path,
+            :class => 'btn btn-primary' %>

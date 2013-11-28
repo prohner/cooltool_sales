@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131128190706) do
+ActiveRecord::Schema.define(version: 20131128202422) do
 
   create_table "app_versions", force: true do |t|
     t.string   "version"
@@ -30,5 +30,28 @@ ActiveRecord::Schema.define(version: 20131128190706) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "countries", force: true do |t|
+    t.string   "country"
+    t.string   "digraph"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sales", force: true do |t|
+    t.integer  "units"
+    t.decimal  "proceeds"
+    t.string   "customer_currency"
+    t.integer  "country_id"
+    t.string   "currency_of_proceeds"
+    t.decimal  "customer_price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "app_version_id"
+    t.date     "sales_date"
+  end
+
+  add_index "sales", ["app_version_id"], name: "index_sales_on_app_version_id"
+  add_index "sales", ["country_id"], name: "index_sales_on_country_id"
 
 end
