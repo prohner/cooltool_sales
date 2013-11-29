@@ -14,6 +14,10 @@ class UploadController < ApplicationController
     if uploaded_file.nil?
       puts "Original filename is #{original_filename}"
       uploaded_file = UploadFile.create(filename: original_filename)
+      uploaded_file.sales_date = DateTime.strptime(original_filename, "S_D_80064177_%Y%m%d.txt")
+      
+      puts "uploaded_file.sales_date is (#{uploaded_file.sales_date})"
+      
       uploaded_file.save!
     else
       # File already exists
@@ -30,7 +34,6 @@ class UploadController < ApplicationController
       app = App.find_by_sku(row[2])
       puts app
       if app.nil?
-        puts "Adding NEW"
         app = App.new
         app.sku = row[2]
         app.title = row[4]

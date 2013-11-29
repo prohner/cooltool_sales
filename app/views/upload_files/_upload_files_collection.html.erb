@@ -1,6 +1,7 @@
 
-<table>
+<table border="1" cellspacing="0">
 	<%= content_tag :tr do -%>
+		<th>Date</th>
 		<% apps.each do |app| %>
 			<th><%= app.title %></th>
 		<% end %>

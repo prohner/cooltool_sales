@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131128212812) do
+ActiveRecord::Schema.define(version: 20131129185203) do
 
   create_table "app_versions", force: true do |t|
     t.string   "version"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20131128212812) do
     t.string   "filename"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "sales_date"
   end
 
 end

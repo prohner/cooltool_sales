@@ -1,6 +1,15 @@
 <%= content_tag :tr do -%>
-<td>
-	<%= upload_file.filename %>
-</td>
+	<td>
+		<%= upload_file.sales_date %>
+	</td>
+
+	<% upload_file.to_sales_grid_row.each do |sale| %>
+		<%= content_tag :td do %>
+			<% if not sale.nil? %>
+			<%= sale %>
+			<% end %>
+		<% end %>
+	<% end %>
+
 <% end -%>
 
