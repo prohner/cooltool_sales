@@ -1,6 +1,8 @@
 require 'csv'
 class UploadController < ApplicationController
   def index
+    @apps = App.all.order("title")
+    @upload_files = UploadFile.all.order("filename desc")
   end
 
   def upload

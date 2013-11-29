@@ -19,12 +19,4 @@
 <% end %>
 </table>
 
-
-<table>
-	<%= content_tag :tr do -%>
-		<% @apps.each do |app| %>
-			<th><%= app.title %></th>
-		<% end %>
-	<% end -%>
-	<%= render @upload_files %>
-</table>
+<%= render partial: "upload_files/upload_files_collection", locals: {apps: @apps, upload_files: @upload_files} %>
