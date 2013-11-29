@@ -14,7 +14,7 @@
 <% @apps.each do |app| %>
 	<tr>
 		<td><%= app.title %></td>
-		<td><%= app.app_versions[0].sales.to_a.sum(&:proceeds) %></td>
+		<td><%= number_to_currency(app.sales_total) %></td>
 	</tr>
 <% end %>
 </table>

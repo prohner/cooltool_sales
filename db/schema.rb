@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131129185203) do
+ActiveRecord::Schema.define(version: 20131129194422) do
 
   create_table "app_versions", force: true do |t|
     t.string   "version"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20131129185203) do
     t.integer  "app_version_id"
     t.date     "sales_date"
     t.integer  "upload_file_id"
+    t.float    "proceeds_in_dollars"
   end
 
   add_index "sales", ["app_version_id"], name: "index_sales_on_app_version_id"

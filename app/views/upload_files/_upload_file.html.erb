@@ -4,9 +4,13 @@
 	</td>
 
 	<% upload_file.to_sales_grid_row.each do |sale| %>
-		<%= content_tag :td do %>
+		<%= content_tag :td, :align => :right do %>
 			<% if not sale.nil? %>
-			<%= sale %>
+				<% if sale.developer_proceeds_is_usd %>
+					<%= number_to_currency(sale.developer_proceeds) %>
+				<% else %>
+				<%= link_to "#{sale.developer_proceeds} (#{sale.currency_of_proceeds})", edit_sale_path(sale) %>
+				<% end %>
 			<% end %>
 		<% end %>
 	<% end %>
