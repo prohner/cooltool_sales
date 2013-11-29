@@ -5,5 +5,16 @@
 	<ul>
 		<li><%= link_to "Upload", upload_index_path %></li>
 		<li><%= link_to "Sales", sales_path %></li>
+		<li><%= link_to pluralize(@filecount, 'Uploaded File'), upload_files_path %></li>
 	</ul>
 </div>
+
+
+<table border=1 cellspacing=0 style="border-color:#f0f0f0;">
+<% @apps.each do |app| %>
+	<tr>
+		<td><%= app.title %></td>
+		<td><%= app.app_versions[0].sales.to_a.sum(&:proceeds) %></td>
+	</tr>
+<% end %>
+</table>

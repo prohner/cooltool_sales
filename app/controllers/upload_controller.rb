@@ -7,9 +7,10 @@ class UploadController < ApplicationController
     rowarray = Array.new
     myfile = params[:file]
     
-    original_filename = params[:original_filename]
+    original_filename = params[:file].original_filename
     uploaded_file = UploadFile.find_by_filename(original_filename)
     if uploaded_file.nil?
+      puts "Original filename is #{original_filename}"
       uploaded_file = UploadFile.create(filename: original_filename)
       uploaded_file.save!
     else
@@ -46,6 +47,7 @@ class UploadController < ApplicationController
       sale.units = row[7]
       sale.proceeds = row[8]
       sale.sales_date = DateTime.strptime(row[9], "%m/%d/%Y")
+      sale.upload_file = uploaded_file
       
       puts "Sales date is (#{sale.sales_date}) (#{row[9]})"
       sale.customer_currency = row[11]
