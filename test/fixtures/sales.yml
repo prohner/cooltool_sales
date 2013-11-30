@@ -3,6 +3,7 @@
 one:
   units: 1
   proceeds: 9.99
+  product_type_identifier: 1f
   customer_currency: MyString
   country_id: 1
   currency_of_proceeds: MyString
@@ -13,9 +14,21 @@ one:
 two:
   units: 1
   proceeds: 9.99
+  product_type_identifier: 1
   customer_currency: MyString
   country_id: 2
   currency_of_proceeds: MyString
   customer_price: 9.99
   app_version_id: 2
   upload_file_id: 2
+
+upgrade_only:
+  units: 1
+  proceeds: 9.99
+  product_type_identifier: 7f
+  customer_currency: MyString
+  country_id: 1
+  currency_of_proceeds: MyString
+  customer_price: 9.99
+  app_version_id: 1
+  upload_file_id: 1

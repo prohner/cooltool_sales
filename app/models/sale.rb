@@ -7,11 +7,19 @@ class Sale < ActiveRecord::Base
   scope :unconverted_foreign_currency, lambda { where(:proceeds_in_dollars => nil).where("proceeds <> 0") }
   
   def developer_proceeds
-    if proceeds_in_dollars.nil? 
-      proceeds.to_f
+    if is_paid_transaction
+      if proceeds_in_dollars.nil? 
+        proceeds.to_f
+      else
+        proceeds_in_dollars
+      end
     else
-      proceeds_in_dollars
+      0
     end
+  end
+  
+  def is_paid_transaction
+    return true if product_type_identifier[0, 1] == "1" else return false
   end
   
   def developer_proceeds_is_usd
@@ -19,10 +27,12 @@ class Sale < ActiveRecord::Base
   end
   
   def before_validation_set_defaults
-    if currency_of_proceeds == "USD"
-      proceeds_in_dollars = proceeds
-    else
-      proceeds_in_dollars = app_version.app.default_proceeds_in_dollars
+    if is_paid_transaction
+      if self.currency_of_proceeds == "USD"
+        self.proceeds_in_dollars = proceeds
+      else
+        self.proceeds_in_dollars = app_version.app.default_proceeds_in_dollars
+      end
     end
   end  
 end

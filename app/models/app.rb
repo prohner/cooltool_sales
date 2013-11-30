@@ -17,7 +17,9 @@ class App < ActiveRecord::Base
     "The Backpacker Checklist"  => 0.7,
     "Thought Cloud"             => 2.1,
     "What in the World"         => 0.7,
-    "focus:MMA"                 => 0.7
+    "focus:MMA"                 => 0.7,
+    "SenGen"                    => 0.0,
+    "HighRidge Insurance"       => 0.0
   }
   
   def sales_total
@@ -32,7 +34,7 @@ class App < ActiveRecord::Base
 
 private 
   def data_is_okay
-    errors[:title] = "Couldn't find title in our acceptable titles list." if @@default_proceeds[title].nil?
+    errors[:title] = "Couldn't find '#{title}' in our acceptable titles list." if @@default_proceeds[title].nil?
   end
   
   def assign_defaults

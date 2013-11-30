@@ -42,23 +42,26 @@ class UploadController < ApplicationController
     
     @rows.each do |row|
       app = App.find_by_sku(row[2])
-      puts app
+      puts "Seeking #{row[4]}"
+      puts app.inspect
       if app.nil?
         app = App.new
         app.sku = row[2]
         app.title = row[4]
         app.apple_identifier = row[14]
         app.category = row[20]
-        app.save
+        app.save!     ## raise an exception because we might get a new/bad app title
       end
 
       version = app.app_versions.find_by_version(row[5])
       if version.nil?
-        version = app.app_versions.create(version: row[5])
-        version.save!
+        version = app.app_versions.new()
+        version.version = row[5]
+        version.save
       end
 
-      sale = version.sales.create()
+      sale = version.sales.new()
+      sale.product_type_identifier = row[6]
       sale.units = row[7]
       sale.proceeds = row[8]
       sale.sales_date = DateTime.strptime(row[9], "%m/%d/%Y")
@@ -80,7 +83,6 @@ class UploadController < ApplicationController
       
       sale.save
       version.save
-      
 
     end
   end
