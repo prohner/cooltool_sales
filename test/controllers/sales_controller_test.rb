@@ -16,13 +16,13 @@ class SalesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create sale" do
-    assert_difference('Sale.count') do
-      post :create, sale: { country_id: @sale.country_id, currency_of_proceeds: @sale.currency_of_proceeds, customer_currency: @sale.customer_currency, customer_price: @sale.customer_price, proceeds: @sale.proceeds, units: @sale.units }
-    end
-
-    assert_redirected_to sale_path(assigns(:sale))
-  end
+  # test "should create sale" do
+  #   assert_difference('Sale.count') do
+  #     post :create, sale: { country_id: @sale.country_id, currency_of_proceeds: @sale.currency_of_proceeds, customer_currency: @sale.customer_currency, customer_price: @sale.customer_price, proceeds: @sale.proceeds, units: @sale.units }
+  #   end
+  # 
+  #   assert_redirected_to sale_path(assigns(:sale))
+  # end
 
   test "should show sale" do
     get :show, id: @sale

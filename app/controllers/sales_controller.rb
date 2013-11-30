@@ -23,19 +23,19 @@ class SalesController < ApplicationController
 
   # POST /sales
   # POST /sales.json
-  def create
-    @sale = Sale.new(sale_params)
-
-    respond_to do |format|
-      if @sale.save
-        format.html { redirect_to @sale, notice: 'Sale was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @sale }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @sale.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # def create
+  #   @sale = Sale.new(sale_params)
+  # 
+  #   respond_to do |format|
+  #     if @sale.save
+  #       format.html { redirect_to @sale, notice: 'Sale was successfully created.' }
+  #       format.json { render action: 'show', status: :created, location: @sale }
+  #     else
+  #       format.html { render action: 'new' }
+  #       format.json { render json: @sale.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # PATCH/PUT /sales/1
   # PATCH/PUT /sales/1.json

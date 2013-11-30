@@ -68,12 +68,6 @@ class UploadController < ApplicationController
       sale.customer_currency = row[11]
       sale.currency_of_proceeds = row[13]
       sale.customer_price = row[15]
-      
-      if sale.currency_of_proceeds == "USD"
-        sale.proceeds_in_dollars = sale.proceeds
-      else
-        sale.proceeds_in_dollars = app.default_proceeds_in_dollars
-      end
 
       country = Country.find_by_digraph(row[12])
       if country.nil?

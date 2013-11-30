@@ -1,6 +1,7 @@
 class App < ActiveRecord::Base
   has_many :app_versions, dependent: :destroy
-  before_validation :before_save_set_defaults, :only => [ :create, :update ]
+  before_save :assign_defaults #, :only => [ :create, :update ]
+  validate :data_is_okay
   validates :title, presence: true
   
   @@default_proceeds = {
@@ -30,8 +31,11 @@ class App < ActiveRecord::Base
   end
 
 private 
-
-  def before_save_set_defaults
-    not @@default_proceeds[title].nil?
+  def data_is_okay
+    errors[:title] = "Couldn't find title in our acceptable titles list." if @@default_proceeds[title].nil?
+  end
+  
+  def assign_defaults
+    self.default_proceeds_in_dollars ||= @@default_proceeds[self.title]
   end
 end
