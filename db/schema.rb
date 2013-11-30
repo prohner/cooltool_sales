@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131129194422) do
+ActiveRecord::Schema.define(version: 20131130012355) do
 
   create_table "app_versions", force: true do |t|
     t.string   "version"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20131129194422) do
     t.string   "category"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "default_proceeds_in_dollars"
   end
 
   create_table "countries", force: true do |t|

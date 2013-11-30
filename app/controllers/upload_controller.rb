@@ -14,7 +14,17 @@ class UploadController < ApplicationController
     if uploaded_file.nil?
       puts "Original filename is #{original_filename}"
       uploaded_file = UploadFile.create(filename: original_filename)
-      uploaded_file.sales_date = DateTime.strptime(original_filename, "S_D_80064177_%Y%m%d.txt")
+      y = original_filename[13,4]
+      m = original_filename[17,2]
+      d = original_filename[19,2]
+      if original_filename[2, 1] == "M"
+        d = "01"
+      elsif original_filename[2, 1] == "Y"
+        m = "01"
+        d = "01"
+      end
+      puts "Dates: #{y}#{m}#{d}"
+      uploaded_file.sales_date = DateTime.strptime("#{y}#{m}#{d}", "%Y%m%d")
       
       puts "uploaded_file.sales_date is (#{uploaded_file.sales_date})"
       
@@ -39,6 +49,33 @@ class UploadController < ApplicationController
         app.title = row[4]
         app.apple_identifier = row[14]
         app.category = row[20]
+        if app.title == "ACT Spell"
+          app.default_proceeds_in_dollars = 2.1
+        elsif app.title == "Face Flipper"
+          app.default_proceeds_in_dollars = 0.7
+        elsif app.title == "Mortgage Mate"
+          app.default_proceeds_in_dollars = 0.7
+        elsif app.title == "Picture Pusher"
+          app.default_proceeds_in_dollars = 0.7
+        elsif app.title == "Rehabulizer"
+          app.default_proceeds_in_dollars = 0.7
+        elsif app.title == "Sk8 Score!"
+          app.default_proceeds_in_dollars = 6.3
+        elsif app.title == "Step-by-Step"
+          app.default_proceeds_in_dollars = 2.1
+        elsif app.title == "StudyUp!"
+          app.default_proceeds_in_dollars = 0.7
+        elsif app.title == "Take Turn Timer"
+          app.default_proceeds_in_dollars = 0.7
+        elsif app.title == "The Backpacker Checklist"
+          app.default_proceeds_in_dollars = 0.7
+        elsif app.title == "Thought Cloud"
+          app.default_proceeds_in_dollars = 2.1
+        elsif app.title == "What in the World"
+          app.default_proceeds_in_dollars = 0.7
+        elsif app.title == "focus:MMA"
+          app.default_proceeds_in_dollars = 0.7
+        end
         app.save
       end
 
@@ -61,6 +98,8 @@ class UploadController < ApplicationController
       
       if sale.currency_of_proceeds == "USD"
         sale.proceeds_in_dollars = sale.proceeds
+      else
+        sale.proceeds_in_dollars = app.default_proceeds_in_dollars
       end
 
       country = Country.find_by_digraph(row[12])

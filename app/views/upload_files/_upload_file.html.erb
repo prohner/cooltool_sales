@@ -5,11 +5,14 @@
 
 	<% upload_file.to_sales_grid_row.each do |sale| %>
 		<%= content_tag :td, :align => :right do %>
-			<% if not sale.nil? %>
+			<% unless sale.nil? or sale == 0 %>
 				<%= number_to_currency(sale) %>
 			<% end %>
 		<% end %>
 	<% end %>
 
+	<td>
+		<%= number_to_currency(upload_file.total_sales) %>
+	</td>
 <% end -%>
 

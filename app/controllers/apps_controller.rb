@@ -69,6 +69,6 @@ class AppsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def app_params
-      params.require(:app).permit(:title, :sku, :apple_identifier, :category)
+      params.require(:app).permit(:title, :sku, :apple_identifier, :category, :default_proceeds_in_dollars)
     end
 end

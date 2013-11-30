@@ -3,7 +3,7 @@ class Sale < ActiveRecord::Base
   belongs_to :app_version
   belongs_to :upload_file
   
-  scope :unconverted_foreign_currency, :conditions => "proceeds_in_dollars is null"
+  scope :unconverted_foreign_currency, :conditions => "proceeds_in_dollars is null and proceeds <> 0"
   
   def developer_proceeds
     if proceeds_in_dollars.nil? 
