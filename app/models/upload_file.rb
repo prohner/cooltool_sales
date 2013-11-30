@@ -7,15 +7,10 @@ class UploadFile < ActiveRecord::Base
     
     app_counter = 0
     apps.each do |app|
+      row[app_counter] = 0
       sales.each do |sale|
         if sale.app_version.app == app
-          puts "Found a sale"
-          row[app_counter] = sale
-          # if sale.proceeds_in_dollars.nil?
-          #   row[app_counter] = sale.proceeds.to_s('F') + "(#{sale.currency_of_proceeds})(#{app.title})"
-          # else
-          #   row[app_counter] = sale.proceeds_in_dollars.to_s + "(#{app.title})"
-          # end
+          row[app_counter] += sale.proceeds_in_dollars * sale.units
         end
       end
       app_counter += 1

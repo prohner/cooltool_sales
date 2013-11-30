@@ -9,14 +9,26 @@
 	</ul>
 </div>
 
-
-<table border=1 cellspacing=0 style="border-color:#f0f0f0;">
-<% @apps.each do |app| %>
-	<tr>
-		<td><%= app.title %></td>
-		<td><%= number_to_currency(app.sales_total) %></td>
-	</tr>
+<% unless @foreign_currency_sales.count == 0 %>
+	<%= content_tag :table, { :border => 1, :cellspacing => 0, :style => "border-color:#f0f0f0;"} do %>
+		<tr><th colspan="3">Foreign Currencies Needing Exchange</th></tr>
+		<tr><th>App</th><th>Proceeds</th></tr>
+		<% @foreign_currency_sales.each do |sale| %>
+			<%= content_tag :tr do %>
+				<%= content_tag( :td, sale.app_version.app.title ) %>
+				<%= content_tag( :td, link_to("#{sale.developer_proceeds} (#{sale.currency_of_proceeds})", edit_sale_path(sale)), { :align => "right" } ) %>
+			<% end %>
+		<% end %>
+	<% end %>
 <% end %>
-</table>
+
+<%= content_tag :table, { :border => 1, :cellspacing => 0, :style => "border-color:#f0f0f0;"} do %>
+	<% @apps.each do |app| %>
+		<tr>
+			<td><%= app.title %></td>
+			<td><%= number_to_currency(app.sales_total) %></td>
+		</tr>
+	<% end %>
+<% end %>
 
 <%= render partial: "upload_files/upload_files_collection", locals: {apps: @apps, upload_files: @upload_files} %>

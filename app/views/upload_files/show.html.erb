@@ -7,3 +7,29 @@
 
 <%= link_to 'Edit', edit_upload_file_path(@upload_file) %> |
 <%= link_to 'Back', upload_files_path %>
+
+<%= content_tag :table, {:border => "1", :cellspacing => "0"} do %>
+	<%= content_tag :tr do %>
+		<%= content_tag(:th, "title") %>
+		<%= content_tag(:th, "version") %>
+		<%= content_tag(:th, "units") %>
+		<%= content_tag(:th, "proceeds") %>
+		<%= content_tag(:th, "currency_of_proceeds") %>
+		<%= content_tag(:th, "developer_proceeds") %>
+		<%= content_tag(:th, "country") %>
+		<%= content_tag(:th, "developer_proceeds_is_usd") %>
+		<% end %>
+	<% @upload_file.sales.each do |sale| %>
+		<%= content_tag :tr do %>
+			<%= content_tag(:td, sale.app_version.app.title) %>
+			<%= content_tag(:td, sale.app_version.version) %>
+			<%= content_tag(:td, sale.units) %>
+			<%= content_tag(:td, sale.proceeds) %>
+			<%= content_tag(:td, sale.currency_of_proceeds) %>
+			<%= content_tag(:td, sale.developer_proceeds) %>
+			<%= content_tag(:td, sale.country.country) %>
+			<%= content_tag(:td, sale.developer_proceeds_is_usd) %>
+			
+		<% end %>
+	<% end %>
+<% end %>
