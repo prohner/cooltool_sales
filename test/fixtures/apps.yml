@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  title: MyString
+  id: 1
+  title: ACT Spell
   sku: MyString
   apple_identifier: MyString
   category: MyString
 
 two:
-  title: MyString
+  id: 2
+  title: The Backpacker Checklist
   sku: MyString
   apple_identifier: MyString
   category: MyString

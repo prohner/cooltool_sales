@@ -1,5 +1,23 @@
 class App < ActiveRecord::Base
   has_many :app_versions, dependent: :destroy
+  before_validation :before_save_set_defaults, :only => [ :create, :update ]
+  validates :title, presence: true
+  
+  @@default_proceeds = {
+    "ACT Spell"                 => 2.1,
+    "Face Flipper"              => 0.7,
+    "Mortgage Mate"             => 0.7,
+    "Picture Pusher"            => 0.7,
+    "Rehabulizer"               => 2.1,
+    "Sk8 Score!"                => 6.3,
+    "Step-by-Step"              => 2.1,
+    "StudyUp!"                  => 0.7,
+    "Take Turn Timer"           => 0.7,
+    "The Backpacker Checklist"  => 0.7,
+    "Thought Cloud"             => 2.1,
+    "What in the World"         => 0.7,
+    "focus:MMA"                 => 0.7
+  }
   
   def sales_total
     total_sales = 0
@@ -9,5 +27,11 @@ class App < ActiveRecord::Base
       end
     end
     total_sales
+  end
+
+private 
+
+  def before_save_set_defaults
+    not @@default_proceeds[title].nil?
   end
 end

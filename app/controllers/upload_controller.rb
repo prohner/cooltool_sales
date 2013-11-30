@@ -49,33 +49,6 @@ class UploadController < ApplicationController
         app.title = row[4]
         app.apple_identifier = row[14]
         app.category = row[20]
-        if app.title == "ACT Spell"
-          app.default_proceeds_in_dollars = 2.1
-        elsif app.title == "Face Flipper"
-          app.default_proceeds_in_dollars = 0.7
-        elsif app.title == "Mortgage Mate"
-          app.default_proceeds_in_dollars = 0.7
-        elsif app.title == "Picture Pusher"
-          app.default_proceeds_in_dollars = 0.7
-        elsif app.title == "Rehabulizer"
-          app.default_proceeds_in_dollars = 0.7
-        elsif app.title == "Sk8 Score!"
-          app.default_proceeds_in_dollars = 6.3
-        elsif app.title == "Step-by-Step"
-          app.default_proceeds_in_dollars = 2.1
-        elsif app.title == "StudyUp!"
-          app.default_proceeds_in_dollars = 0.7
-        elsif app.title == "Take Turn Timer"
-          app.default_proceeds_in_dollars = 0.7
-        elsif app.title == "The Backpacker Checklist"
-          app.default_proceeds_in_dollars = 0.7
-        elsif app.title == "Thought Cloud"
-          app.default_proceeds_in_dollars = 2.1
-        elsif app.title == "What in the World"
-          app.default_proceeds_in_dollars = 0.7
-        elsif app.title == "focus:MMA"
-          app.default_proceeds_in_dollars = 0.7
-        end
         app.save
       end
 
