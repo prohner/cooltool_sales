@@ -36,6 +36,13 @@ gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem 'twitter-bootstrap-rails'
 
+## For charting
+## http://www.imagemagick.org/script/binary-releases.php
+## http://stackoverflow.com/questions/19023268/ruby-on-rails-rmagick-gem-install-issue
+# gem 'rmagick'
+# gem 'gruff'
+gem "googlecharts", "~> 1.6.8"
+
 gem 'libv8', '3.11.8.17'
 
 

@@ -23,13 +23,33 @@
 	<% end %>
 <% end %>
 
+
 <%= content_tag :table, { :border => 1, :cellspacing => 0, :style => "border-color:#f0f0f0;"} do %>
-	<% @apps.each do |app| %>
-		<tr>
-			<td><%= app.title %></td>
-			<td><%= number_to_currency(app.sales_total) %></td>
-		</tr>
+	<%= content_tag :tr do %>
+		<%= content_tag :td do %>
+			<%= content_tag :table, { :border => 1, :cellspacing => 0, :style => "border-color:#f0f0f0;"} do %>
+				<% @apps.each do |app| %>
+					<tr>
+						<td><%= app.title %></td>
+						<td align="right"><%= number_to_currency(app.sales_total) %></td>
+					</tr>
+				<% end %>
+			<% end %>
+		<% end %>
+		<%= content_tag :td do %>
+		<img src="<%= Gchart.pie(:title => @title, 
+									:labels => @legend, 
+									:data => @data, 
+									:bg => 'efefef',
+									:size => '500x250',
+									:background => 'E0E0E0', 
+									:chart_background => 'F0F0F0') %>">
+		<% end %>
 	<% end %>
 <% end %>
 
+
+
+
 <%= render partial: "upload_files/upload_files_collection", locals: {apps: @apps, upload_files: @upload_files} %>
+
