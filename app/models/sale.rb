@@ -2,7 +2,7 @@ class Sale < ActiveRecord::Base
   belongs_to :country
   belongs_to :app_version
   belongs_to :upload_file
-  before_validation :before_validation_set_defaults, :only => [ :create, :update ]
+  before_save :before_validation_set_defaults#, :only => [ :create, :update ]
   
   scope :unconverted_foreign_currency, lambda { where(:proceeds_in_dollars => nil).where("proceeds <> 0") }
   

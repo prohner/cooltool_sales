@@ -4,6 +4,7 @@ class AppsControllerTest < ActionController::TestCase
   setup do
     @app = apps(:one)
     @app.title = "Mortgage Mate"  ## Needs to be a unique name that is not one of the fixtures
+    @app.default_proceeds_in_dollars = 0.7
   end
 
   test "should get index" do
@@ -19,7 +20,7 @@ class AppsControllerTest < ActionController::TestCase
 
   test "should create app" do
     assert_difference('App.count') do
-      post :create, app: { apple_identifier: @app.apple_identifier, category: @app.category, sku: @app.sku, title: @app.title }
+      post :create, app: { apple_identifier: @app.apple_identifier, category: @app.category, sku: @app.sku, title: @app.title, default_proceeds_in_dollars: @app.default_proceeds_in_dollars }
     end
 
     assert_redirected_to app_path(assigns(:app))
@@ -36,7 +37,7 @@ class AppsControllerTest < ActionController::TestCase
   end
 
   test "should update app" do
-    patch :update, id: @app, app: { apple_identifier: @app.apple_identifier, category: @app.category, sku: @app.sku, title: @app.title }
+    patch :update, id: @app, app: { apple_identifier: @app.apple_identifier, category: @app.category, sku: @app.sku, title: @app.title, default_proceeds_in_dollars: @app.default_proceeds_in_dollars }
     assert_redirected_to app_path(assigns(:app))
   end
 

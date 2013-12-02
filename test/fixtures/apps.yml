@@ -6,6 +6,7 @@ one:
   sku: MyString
   apple_identifier: MyString
   category: MyString
+  default_proceeds_in_dollars: 2.99
 
 two:
   id: 2
@@ -13,3 +14,4 @@ two:
   sku: MyString
   apple_identifier: MyString
   category: MyString
+  default_proceeds_in_dollars: 0.99

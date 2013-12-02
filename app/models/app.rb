@@ -2,8 +2,7 @@ class App < ActiveRecord::Base
   has_many :app_versions, dependent: :destroy
   before_save :assign_defaults #, :only => [ :create, :update ]
   validate :data_is_okay
-  # validates_presence_of :title
-  # validates_uniqueness_of :title
+  validates_presence_of :default_proceeds_in_dollars
   validates :title, presence: true, uniqueness: true
   
   @@default_proceeds = {
