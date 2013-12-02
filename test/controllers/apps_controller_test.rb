@@ -3,6 +3,7 @@ require 'test_helper'
 class AppsControllerTest < ActionController::TestCase
   setup do
     @app = apps(:one)
+    @app.title = "Mortgage Mate"  ## Needs to be a unique name that is not one of the fixtures
   end
 
   test "should get index" do
