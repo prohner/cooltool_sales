@@ -62,13 +62,15 @@
 	<%= content_tag :tr do %>
 		<%= content_tag :td do %>
 			<%= content_tag :table, { :border => 1, :cellspacing => 0, :style => "border-color:#f0f0f0;"} do %>
-			<tr><th colspan="2">Sales from <%= @filter_from %> through <%= @filter_to %> </th></tr>
+				<tr><th colspan="3">Sales from <%= @filter_from %> through <%= @filter_to %> </th></tr>
+				<tr><th>App</th><th>Units</th><th>Sales</th></tr>
 				<% @apps.each do |app| %>
 					<tr>
 						<td>
 								<%= link_to app.title, edit_app_path(app) %> 
 								(<%= app.short_app_name %>)
 						</td>
+						<td align="right"><%= number_with_delimiter(app.units_total_within_date_range(@filter_from, @filter_to), :delimiter => ',') %></td>
 						<td align="right"><%= number_to_currency(app.sales_total_within_date_range(@filter_from, @filter_to)) %></td>
 					</tr>
 				<% end %>

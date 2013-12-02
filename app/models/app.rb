@@ -45,6 +45,18 @@ class App < ActiveRecord::Base
     end
     total_sales
   end
+  
+  def units_total_within_date_range(from, to)
+    total_units = 0
+    app_versions.each do |app_version|
+      app_version.sales.each do |sale|
+        if from <= sale.sales_date and sale.sales_date <= to and sale.is_paid_transaction
+          total_units += sale.units
+        end
+      end
+    end
+    total_units
+  end
 
 private 
   def data_is_okay
