@@ -1,6 +1,10 @@
 class UploadFile < ActiveRecord::Base
   has_many :sales, dependent: :destroy
   
+  def self.sales_in_date_range(from, to)
+    where("sales_date >= ? and sales_date <= ?", from, to)
+  end
+  
   def to_sales_grid_row
     apps = App.all.order("title")
     row = Array.new(apps.count)

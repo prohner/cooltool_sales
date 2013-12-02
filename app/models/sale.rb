@@ -19,7 +19,11 @@ class Sale < ActiveRecord::Base
   end
   
   def is_paid_transaction
-    return true if product_type_identifier[0, 1] == "1" else return false
+    if product_type_identifier[0, 1] == "1" 
+      return true 
+    else 
+      return false
+    end
   end
   
   def developer_proceeds_is_usd

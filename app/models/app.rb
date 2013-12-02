@@ -19,7 +19,9 @@ class App < ActiveRecord::Base
     "What in the World"         => 0.7,
     "focus:MMA"                 => 0.7,
     "SenGen"                    => 0.0,
-    "HighRidge Insurance"       => 0.0
+    "HighRidge Insurance"       => 0.0,
+    "GoBingo"                   => 0.7,
+    "WordAACcess"               => 10.5
   }
   
   def sales_total
@@ -27,6 +29,18 @@ class App < ActiveRecord::Base
     app_versions.each do |app_version|
       app_version.sales.each do |sale|
         total_sales += sale.developer_proceeds * sale.units
+      end
+    end
+    total_sales
+  end
+  
+  def sales_total_within_date_range(from, to)
+    total_sales = 0
+    app_versions.each do |app_version|
+      app_version.sales.each do |sale|
+        if from <= sale.sales_date and sale.sales_date <= to
+          total_sales += sale.developer_proceeds * sale.units
+        end
       end
     end
     total_sales
