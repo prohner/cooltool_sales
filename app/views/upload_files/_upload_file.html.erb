@@ -1,4 +1,4 @@
-<%= content_tag :tr do -%>
+<%= content_tag :tr, :class => cycle('even', 'odd') do -%>
 	<td nowrap>
 		<%= upload_file.sales_date %>
 	</td>
