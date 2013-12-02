@@ -23,6 +23,7 @@
 		<%= content_tag :td do %>
 			<div>
 				<ul>
+					<li><%= link_to "Home", root_path %></li>
 					<li><%= link_to "Upload", upload_index_path %></li>
 					<li><%= link_to "Sales", sales_path %></li>
 					<li><%= link_to "Apps", apps_path %></li>
@@ -34,9 +35,7 @@
 			<div>TO DO
 				<ul>
 					<li>Chart by Country</li>
-					<li>Add Units to main page</li>
 					<li>Testing</li>
-					<li>Add sales $ to pie chart labels</li>
 					<li>Apply bootstrap styles</li>
 				</ul>
 			</div>
@@ -81,7 +80,7 @@
 										:labels => @legend, 
 										:data => @data, 
 										:bg => 'efefef',
-										:size => '600x300',
+										:size => '700x330',
 										:background => 'E0E0E0', 
 										:chart_background => 'F0F0F0') %>">
 		<% end %>
