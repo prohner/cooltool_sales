@@ -34,9 +34,9 @@
 		<%= content_tag :td do %>
 			<div>TO DO
 				<ul>
+					<li>Master page?</li>
 					<li>Chart by Country</li>
 					<li>Testing</li>
-					<li>Apply bootstrap styles</li>
 				</ul>
 			</div>
 		<% end %>
@@ -73,6 +73,7 @@
 						<td align="right"><%= number_to_currency(app.sales_total_within_date_range(@filter_from, @filter_to)) %></td>
 					</tr>
 				<% end %>
+				<tr><td colspan="2" align="right">Total</td><td><%= number_to_currency(@total_sales) %></td></tr>
 			<% end %>
 		<% end %>
 		<%= content_tag :td do %>

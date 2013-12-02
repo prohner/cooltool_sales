@@ -1,35 +1,23 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = UploadFile -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <strong>Filename:</strong>
-  <%= @upload_file.filename %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:filename) %>:</strong></dt>
+  <dd><%= @upload_file.filename %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:sales_date) %>:</strong></dt>
+  <dd><%= @upload_file.sales_date %></dd>
+</dl>
 
-<%= link_to 'Edit', edit_upload_file_path(@upload_file) %> |
-<%= link_to 'Back', upload_files_path %>
-
-<%= content_tag :table, {:border => "1", :cellspacing => "0"} do %>
-	<%= content_tag :tr do %>
-		<%= content_tag(:th, "title") %>
-		<%= content_tag(:th, "version") %>
-		<%= content_tag(:th, "units") %>
-		<%= content_tag(:th, "proceeds") %>
-		<%= content_tag(:th, "currency_of_proceeds") %>
-		<%= content_tag(:th, "developer_proceeds") %>
-		<%= content_tag(:th, "country") %>
-		<%= content_tag(:th, "developer_proceeds_is_usd") %>
-		<% end %>
-	<% @upload_file.sales.each do |sale| %>
-		<%= content_tag :tr do %>
-			<%= content_tag(:td, sale.app_version.app.title) %>
-			<%= content_tag(:td, sale.app_version.version) %>
-			<%= content_tag(:td, sale.units) %>
-			<%= content_tag(:td, sale.proceeds) %>
-			<%= content_tag(:td, sale.currency_of_proceeds) %>
-			<%= content_tag(:td, sale.developer_proceeds) %>
-			<%= content_tag(:td, sale.country.country) %>
-			<%= content_tag(:td, sale.developer_proceeds_is_usd) %>
-			
-		<% end %>
-	<% end %>
-<% end %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              upload_files_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_upload_file_path(@upload_file), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              upload_file_path(@upload_file),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

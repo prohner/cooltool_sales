@@ -24,6 +24,7 @@ class WelcomeController < ApplicationController
     @upload_files = UploadFile.sales_in_date_range(@filter_from, @filter_to).order("sales_date desc")
     @filecount = UploadFile.all.count
     @foreign_currency_sales = Sale.unconverted_foreign_currency
+    @total_sales = 0
 
     @legend = [ ]
     @data = [ ]
@@ -31,6 +32,7 @@ class WelcomeController < ApplicationController
     @apps.each do |app|
       sales_total = app.sales_total_within_date_range(@filter_from, @filter_to)
       if sales_total > 0
+        @total_sales += sales_total
         label = "#{app.title} (#{number_to_currency(sales_total)})"
         @legend << label
         @data << sales_total
