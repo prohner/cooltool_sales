@@ -33,13 +33,12 @@
 		<%= content_tag :td do %>
 			<div>TO DO
 				<ul>
-					<li>Filter by date</li>
 					<li>Chart by Country</li>
 					<li>Add Units to main page</li>
-					<li>Create app "short name" to narrow up the grid</li>
 					<li>Alternate color lines on the grid</li>
 					<li>Testing</li>
 					<li>Add sales $ to pie chart labels</li>
+					<li>Apply bootstrap styles</li>
 				</ul>
 			</div>
 		<% end %>
@@ -67,7 +66,10 @@
 			<tr><th colspan="2">Sales from <%= @filter_from %> through <%= @filter_to %> </th></tr>
 				<% @apps.each do |app| %>
 					<tr>
-						<td><%= app.title %></td>
+						<td>
+								<%= link_to app.title, edit_app_path(app) %> 
+								(<%= app.short_app_name %>)
+						</td>
 						<td align="right"><%= number_to_currency(app.sales_total_within_date_range(@filter_from, @filter_to)) %></td>
 					</tr>
 				<% end %>

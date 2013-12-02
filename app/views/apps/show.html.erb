@@ -6,6 +6,8 @@
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
   <dd><%= @app.title %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:short_app_name) %>:</strong></dt>
+  <dd><%= @app.short_app_name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:sku) %>:</strong></dt>
   <dd><%= @app.sku %></dd>
   <dt><strong><%= model_class.human_attribute_name(:apple_identifier) %>:</strong></dt>
@@ -24,4 +26,5 @@
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
+			  <%= link_to "Home", root_path, :class => 'btn' %>
 </div>

@@ -3,7 +3,7 @@
 	<%= content_tag :tr do -%>
 		<th>Date</th>
 		<% apps.each do |app| %>
-			<th><%= app.title %></th>
+			<th><%= link_to app.short_app_name, edit_app_path(app) %> </th>
 		<% end %>
 		<th>Daily Total</th>
 	<% end -%>
