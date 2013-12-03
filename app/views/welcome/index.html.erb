@@ -15,7 +15,7 @@
 }
 </style>
 
-<h1>Welcome#index</h1>
+<h1>Welcome <small>to the jungle</small></h1>
 <p id="error"><%= flash[:error] %></p>
 
 <%= content_tag :table, { :border => 1, :cellspacing => 0, :style => "border-color:#f0f0f0;"} do %>
@@ -57,7 +57,7 @@
 <% end %>
 
 
-<%= content_tag :table, { :border => 1, :cellspacing => 0, :style => "border-color:#f0f0f0;"} do %>
+<%= content_tag :table, { :border => 1, :cellspacing => 0, :class => "table table-condensed" } do %>
 	<%= content_tag :tr do %>
 		<%= content_tag :td do %>
 			<%= content_tag :table, { :border => 1, :cellspacing => 0, :style => "border-color:#f0f0f0;"} do %>
