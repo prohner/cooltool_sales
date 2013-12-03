@@ -71,8 +71,16 @@
 								<%= link_to app.title, edit_app_path(app) %> 
 								(<%= app.short_app_name %>)
 						</td>
-						<td align="right"><%= number_with_delimiter(app.units_total_within_date_range(@filter_from, @filter_to), :delimiter => ',') %></td>
-						<td align="right"><%= number_to_currency(app.sales_total_within_date_range(@filter_from, @filter_to)) %></td>
+						<td>
+							<%= content_tag :div, :class => "text-right" do %>
+								<%= number_with_delimiter(app.units_total_within_date_range(@filter_from, @filter_to), :delimiter => ',') %>
+							<% end %>
+						</td>
+						<td>
+							<%= content_tag :div, :class => "text-right" do %>
+								<%= number_to_currency(app.sales_total_within_date_range(@filter_from, @filter_to)) %>
+							<% end %>
+						</td>
 					</tr>
 				<% end %>
 				<tr><td colspan="2" align="right">Total</td><td><%= number_to_currency(@total_sales) %></td></tr>

@@ -4,15 +4,19 @@
 	</td>
 
 	<% upload_file.to_sales_grid_row.each do |sale| %>
-		<%= content_tag :td, :align => :right do %>
+		<%= content_tag :td do %>
 			<% unless sale.nil? or sale == 0 %>
-				<%= number_to_currency(sale) %>
+				<%= content_tag :div, :class => "text-right" do %>
+					<%= number_to_currency(sale) %>
+				<% end %>
 			<% end %>
 		<% end %>
 	<% end %>
 
 	<td align="right">
-		<%= number_to_currency(upload_file.total_sales) %>
+		<%= content_tag :div, :class => "text-right" do %>
+			<%= number_to_currency(upload_file.total_sales) %>
+		<% end %>
 	</td>
 <% end -%>
 
