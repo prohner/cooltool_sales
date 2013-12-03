@@ -1,35 +1,41 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Sale -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <strong>Units:</strong>
-  <%= @sale.units %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:units) %>:</strong></dt>
+  <dd><%= @sale.units %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:proceeds) %>:</strong></dt>
+  <dd><%= @sale.proceeds %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:customer_currency) %>:</strong></dt>
+  <dd><%= @sale.customer_currency %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:country_id) %>:</strong></dt>
+  <dd><%= @sale.country_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:currency_of_proceeds) %>:</strong></dt>
+  <dd><%= @sale.currency_of_proceeds %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:customer_price) %>:</strong></dt>
+  <dd><%= @sale.customer_price %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:app_version_id) %>:</strong></dt>
+  <dd><%= @sale.app_version_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:sales_date) %>:</strong></dt>
+  <dd><%= @sale.sales_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:upload_file_id) %>:</strong></dt>
+  <dd><%= @sale.upload_file_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:proceeds_in_dollars) %>:</strong></dt>
+  <dd><%= @sale.proceeds_in_dollars %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:product_type_identifier) %>:</strong></dt>
+  <dd><%= @sale.product_type_identifier %></dd>
+</dl>
 
-<p>
-  <strong>Proceeds:</strong>
-  <%= @sale.proceeds %>
-</p>
-
-<p>
-  <strong>Customer currency:</strong>
-  <%= @sale.customer_currency %>
-</p>
-
-<p>
-  <strong>Country:</strong>
-  <%= @sale.country.digraph %>
-</p>
-
-<p>
-  <strong>Currency of proceeds:</strong>
-  <%= @sale.currency_of_proceeds %>
-</p>
-
-<p>
-  <strong>Customer price:</strong>
-  <%= @sale.customer_price %>
-</p>
-
-<%= link_to 'Edit', edit_sale_path(@sale) %> |
-<%= link_to 'Back', sales_path %> | 
-<%= link_to 'Home', "/" %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              sales_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_sale_path(@sale), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              sale_path(@sale),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

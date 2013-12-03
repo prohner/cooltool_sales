@@ -43,6 +43,8 @@ gem 'twitter-bootstrap-rails'
 # gem 'gruff'
 gem "googlecharts", "~> 1.6.8"
 
+gem 'will_paginate', '~> 3.0'
+
 gem 'libv8', '3.11.8.17'
 
 
