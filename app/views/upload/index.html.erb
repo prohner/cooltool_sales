@@ -1,5 +1,5 @@
-<h1>Upload#upload</h1>
-<p>Find me in app/views/upload/upload.html.erb</p>
+<h1>Upload iTunes Connect Sales Detail</h1>
+
 
 <%= form_tag({:action => :upload}, multipart: true) do %>
   <%= file_field_tag :file %>
@@ -7,4 +7,5 @@
 <% end %>
 
 
+<h2>Recently Uploaded Files</h2>
 <%= render partial: "upload_files/upload_files_collection", locals: {apps: @apps, upload_files: @upload_files} %>

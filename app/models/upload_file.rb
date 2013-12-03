@@ -1,5 +1,7 @@
 class UploadFile < ActiveRecord::Base
   has_many :sales, dependent: :destroy
+  scope :recently_uploaded, lambda { where("created_at >= ?", Date.today().days_ago(5)) }
+  
   
   def self.sales_in_date_range(from, to)
     where("sales_date >= ? and sales_date <= ?", from, to)
