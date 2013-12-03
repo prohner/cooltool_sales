@@ -29,6 +29,11 @@ class WelcomeController < ApplicationController
     @legend = [ ]
     @data = [ ]
     @title = "App Sales from #{@filter_from} through #{@filter_to}"
+
+    @units_legend = [ ]
+    @units_data = [ ]
+    @units_title = "Unit Sales from #{@filter_from} through #{@filter_to}"
+
     @apps.each do |app|
       sales_total = app.sales_total_within_date_range(@filter_from, @filter_to)
       if sales_total > 0
@@ -36,6 +41,13 @@ class WelcomeController < ApplicationController
         label = "#{app.title} (#{number_to_currency(sales_total)})"
         @legend << label
         @data << sales_total
+      end
+
+      units_total = app.units_total_within_date_range(@filter_from, @filter_to)
+      if units_total > 0
+        label = "#{app.title} (#{units_total})"
+        @units_legend << label
+        @units_data << units_total
       end
     end
   end

@@ -8,6 +8,25 @@
 </head>
 <body>
 
+<ul class="nav nav-pills">
+	<li class="<%= current_page(root_path) %>"><%= link_to "Home", root_path %></li>
+	<li class="<%= current_page(upload_index_path) %>"><%= link_to "Upload", upload_index_path %></li>
+	<li class="<%= current_page(sales_path) %>"><%= link_to "Sales", sales_path %></li>
+	<li class="<%= current_page(apps_path) %>"><%= link_to "Apps", apps_path %></li>
+	<li class="<%= current_page(upload_files_path) %>"><%= link_to "Uploaded Files", upload_files_path %></li>
+	
+	<li class="dropdown">
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+		To Do <span class="caret"></span>
+		</a>
+		<ul class="dropdown-menu">
+			<li>Master page?</li>
+			<li>Chart by Country</li>
+			<li>Testing</li>
+		</ul>
+	</li>
+</ul>			
+
 <%= yield %>
 
 </body>
