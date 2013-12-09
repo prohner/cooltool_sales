@@ -8,7 +8,7 @@ class UploadFile < ActiveRecord::Base
   end
   
   def to_sales_grid_row
-    apps = App.all.order("title")
+    apps = App.all.order("short_app_name")
     row = Array.new(apps.count)
     
     app_counter = 0

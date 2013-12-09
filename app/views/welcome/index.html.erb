@@ -67,7 +67,7 @@
 				<tr><th>App</th><th>Units</th><th>Sales</th></tr>
 				<% @apps.each do |app| %>
 					<tr>
-						<td>
+						<td nowrap>
 								<%= link_to app.title, edit_app_path(app) %> 
 								(<%= app.short_app_name %>)
 						</td>
@@ -86,19 +86,19 @@
 				<tr><td colspan="2" align="right">Total</td><td><%= number_to_currency(@total_sales) %></td></tr>
 			<% end %>
 		<% end %>
-		<%= content_tag :td do %>
+		<%= content_tag :td, :nowrap => true do %>
 			<img src="<%= Gchart.pie(:title => @title, 
 										:labels => @legend, 
 										:data => @data, 
 										:bg => 'efefef',
-										:size => '700x340',
+										:size => '700x370',
 										:background => 'E0E0E0', 
 										:chart_background => 'F0F0F0') %>">
 			<img src="<%= Gchart.pie(:title => @units_title, 
 										:labels => @units_legend, 
 										:data => @units_data, 
 										:bg => 'efefef',
-										:size => '700x340',
+										:size => '700x370',
 										:background => 'E0E0E0', 
 										:chart_background => 'F0F0F0') %>">
 		<% end %>

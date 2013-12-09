@@ -1,4 +1,5 @@
 CooltoolSales::Application.routes.draw do
+  get "accounts/index"
   resources :upload_files
 
   get "welcome/index"
